@@ -10,6 +10,11 @@
     <%= link_to('Login', new_user_session_path)  %>
   </li>
 <% end %>
+<hr>
 <div>
-  <%= @result %>
+  <% @groups[:items].each do |group| %>
+  <p><%= image_tag group['photo_50'] %><%= link_to group['name'], "https://vk.com/#{group['screen_name']}", target: '_blank' %><%= group['id'] %></p>
+  <% end if @groups %>
+  <%= #@walls
+  %>
 </div>

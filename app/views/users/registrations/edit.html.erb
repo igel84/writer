@@ -32,19 +32,19 @@
   </div>
 
   <div class="field">
-    <%= f.label :app_id %><br />
-    <%= f.text_field :app_id %>
+    <%= f.label :vk_app_id %><br />
+    <%= f.text_field :vk_app_id %>
   </div>
 
-  <%- if current_user.app_id.present? %>
+  <%- if current_user.vk_app_id.present? %>
     <div>
-      <%= link_to "get token", "https://oauth.vk.com/authorize?client_id=#{current_user.app_id}&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=groups,wall,offline&response_type=token&v=5.52", target: "_blank" %>
+      <p><%= link_to "get token", "https://oauth.vk.com/authorize?client_id=#{current_user.vk_app_id}&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=groups,wall,offline&response_type=token&v=5.52", target: "_blank" %></p>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :token %><br />
-    <%= f.text_field :token %>
+    <%= f.label :vk_access_token %><br />
+    <%= f.text_field :vk_access_token %>
   </div>
 
 
@@ -57,4 +57,5 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<p><%= link_to "Back", :back %></p>
+<p><%= link_to "Home", :root %></p>

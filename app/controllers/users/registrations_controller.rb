@@ -19,8 +19,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    current_user.update_column(:app_id, params[:user][:app_id]) if params[:user][:app_id]
-    current_user.update_column(:token, params[:user][:token]) if params[:user][:token]
+    current_user.update_column(:vk_app_id, params[:user][:vk_app_id]) if params[:user][:vk_app_id]
+    current_user.update_column(:vk_access_token, params[:user][:vk_access_token]) if params[:user][:vk_access_token]
     super
   end
 

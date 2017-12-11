@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211154223) do
+ActiveRecord::Schema.define(version: 20171211204850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "societies", force: :cascade do |t|
+    t.string "name"
+    t.string "alias"
+    t.string "photo"
+    t.bigint "user_id"
+    t.string "url"
+    t.string "tags", default: [], array: true
+    t.bigint "vk_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_societies_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,10 +41,11 @@ ActiveRecord::Schema.define(version: 20171211154223) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "app_id", default: ""
-    t.string "token", default: ""
+    t.string "vk_app_id", default: ""
+    t.string "vk_access_token", default: ""
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "societies", "users"
 end

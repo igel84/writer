@@ -13,7 +13,14 @@ class Vk
   def get_infos(which=:groups, options={})
     params = options.map{|k,v| "#{k}=#{v}"}.join('&')
     Rails.logger.info params
-    response = self.class.get("/#{which}.get?#{params}"+@postfix)['response']
+    begin
+      response = self.class.get("/#{which}.get?#{params}"+@postfix)['response']
+    rescue SocketError => e
+      Rails.logger.info e.message
+      response = {}
+      response['count'] = 0
+      response['items'] = []
+    end
     {count: response['count'], items: response['items']}
   end
 

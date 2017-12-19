@@ -1,0 +1,14 @@
+<div class="row d-flex justify-content-center">
+  <small><%= l @post.updated_at %></small>
+</div>
+<div>
+  <%= form_for @post do |f| %>
+    <div class="input-group">
+      <%= f.text_area "text", class: "form-control", placeholder: "Post text", rows: 20 %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.submit "Save", class: "btn btn-outline-primary" %>
+    </div>
+  <% end %>
+</div>

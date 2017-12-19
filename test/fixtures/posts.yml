@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyText
+  folder: one
+  user: one
+  position: 1
+
+two:
+  text: MyText
+  folder: two
+  user: two
+  position: 1

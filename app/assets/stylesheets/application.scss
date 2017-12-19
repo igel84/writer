@@ -1,0 +1,39 @@
+@import "bootstrap";
+@import "font-awesome";
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.col-6, .col-12 {
+  padding: 0 !important;
+  border-right: solid 1px #c8ccd0 !important;
+}
+.container > .row > .col-6 {
+  border-right: none !important;
+}
+.p-2 {
+  padding: 0 !important;
+}
+.bg-secondary { background: #c8ccd0 !important; }
+.container { margin-top: 50px !important; }
+.navbar { height: 50px !important; }
+.navbar a:hover { text-decoration: underline; }
+.list-unstyled > li { padding: 2px 10px !important; }
+.list-group-item.active {
+  background: #c8ccd0 !important;
+  border-radius: 0 !important;
+  border-color: #c8ccd0 !important;
+}
+.list-group-item {
+  background: #fff !important;
+  border-radius: 0 !important;
+  border-color: #c8ccd0 !important;
+  border-right: none !important;
+  border-left: none !important;
+}
+.input-group {
+  border-radius: 0 !important;
+}
+textarea.form-control {
+  border: none !important;
+}

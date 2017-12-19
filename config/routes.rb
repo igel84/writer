@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :folders
+  resources :posts
+
   # devise_for :users
   devise_for :users, :skip => [:registrations]
   as :user do

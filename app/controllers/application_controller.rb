@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
   def test
     render inline: "<h6>Ok!</h6>"
   end
+
 end

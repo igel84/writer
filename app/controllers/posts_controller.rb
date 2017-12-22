@@ -12,12 +12,28 @@ class PostsController < ApplicationController
   end
 
   def update
+    if @post && @post.user == current_user
+      @post.update(post_params)
+      redirect_to edit_post_path(@post), :notice => "Success!"
+    else
+      redirect_to edit_post_path(@post), :notice => "Access is denied!"
+    end
   end
 
   def destroy
+    if @post && @post.user == current_user
+      @post.destroy
+      redirect_to edit_folder_path(@folder), :notice => "Success!"
+    else
+      redirect_to edit_folder_path(@folder), :notice => "Access is denied!"
+    end
   end
 
   private
+
+  def post_params
+    params.require(:post).permit(:text)
+  end
 
   def current_folder
     if params[:folder_id]

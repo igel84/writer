@@ -1,14 +1,21 @@
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $('.post-text').height($('.post-list').height());
+    $('textarea').height($('.post-list').height());
+    console.log($('.post-form').height());
+  });
+</script>
 <div class="row d-flex justify-content-center">
   <small><%= l @post.updated_at %></small>
 </div>
-<div>
-  <%= form_for @post do |f| %>
-    <div class="input-group">
-      <%= f.text_area "text", class: "form-control", placeholder: "Post text", rows: 20 %>
+<div class="row justify-content-end h-100">
+  <%= form_for @post, html: {class: "col-12 d-flex align-self-xl-stretch flex-column"} do |f| %>
+    <div class="input-group mb-auto p-2 post-text">
+      <%= f.text_area "text", class: "form-control", placeholder: "Post text" %>
     </div>
     <br>
-    <div class="form-group">
-      <%= f.submit "Save", class: "btn btn-outline-primary" %>
+    <div class="form-group p-2 text-right">
+      <%= f.submit "Save", class: "btn btn-block btn-outline-primary" %>
     </div>
   <% end %>
 </div>

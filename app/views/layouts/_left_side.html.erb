@@ -1,11 +1,11 @@
-<div class="row  justify-content-end h-100">
+<div class="row justify-content-end h-100">
   <div class="col-6  d-flex align-self-xl-stretch flex-column">
     <ul class="mb-auto p-2 list-unstyled">
       <%- current_user.folders.each do |folder| %>
         <%- if @folder && @folder == folder %>
           <li class="bg-secondary text-white"><%= folder.name %></li>
         <% else %>
-          <li><%= link_to folder.name, folder %></li>
+          <li><%= link_to folder.name, edit_folder_path(folder) %></li>
         <% end %>
       <% end %>
     </ul>
@@ -22,14 +22,14 @@
     </div>
   </div>
 
-  <div class="col-6">
+  <div class="col-6 post-list">
     <div class="list-group">
       <%- @folder.posts.each do |post| %>
         <a class="list-group-item list-group-item-action flex-column align-items-start <%= 'active' if @post && @post == post %>" href="/posts/<%= post.id %>/edit">
-          <h6><%= post.text %></h6>
+          <h6><%= truncate(post.text, length: 20, ommission: "...") %></h6>
           <small><%= l post.updated_at %></small>
         </a>
-      <% end %>
+      <% end if @folder %>
     </div>
   </div>
 </div>

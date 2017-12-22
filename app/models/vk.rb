@@ -17,11 +17,12 @@ class Vk
       response = self.class.get("/#{which}.get?#{params}"+@postfix)['response']
     rescue SocketError => e
       Rails.logger.info e.message
-      response = {}
-      response['count'] = 0
-      response['items'] = []
     end
-    {count: response['count'], items: response['items']}
+    if response
+      {count: response['count'], items: response['items']}
+    else
+      {count: 0, items: []}
+    end
   end
 
   # def get_groups(access_token)

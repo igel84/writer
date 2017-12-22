@@ -1,18 +1,22 @@
-<nav class="navbar sticky-top d-flex justify-content-around bg-secondary">
+<nav class="navbar sticky-top d-flex justify-content-between bg-secondary">
   <%= link_to "Writer", root_path, class: "navbar-brand text-white p-2" %>
   <% if user_signed_in? %>
     <ul class="nav p-2">
-        <li class="nav-item">
-          <%= link_to new_post_path(folder_id: @folder.id), class: "nav-link text-white btn btn-outline-secondary btn-sm" do %>
-            <%= fa_icon "edit" %>
-          <% end %>
-        </li>
+        <%- if @folder %>
+          <li class="nav-item">
+            <%= link_to new_post_path(folder_id: @folder.id), class: "nav-link text-white btn btn-outline-secondary btn-sm" do %>
+              <%= fa_icon "edit" %>
+            <% end %>
+          </li>
+        <% end %>
         &nbsp;
-        <li class="nav-item">
-          <%= link_to "#", class: "nav-link text-white btn btn-outline-secondary btn-sm" do %>
-            <%= fa_icon "trash" %>
-          <% end %>
-        </li>
+        <%- if @folder || @post %>
+          <li class="nav-item">
+            <%= link_to @post.nil? ? @folder : @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "nav-link text-white btn btn-outline-secondary btn-sm" do %>
+              <%= fa_icon "trash" %>
+            <% end %>
+          </li>
+        <% end %>
     </ul>
   <% end %>
   <ul class="nav p-2">
